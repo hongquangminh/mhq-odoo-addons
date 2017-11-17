@@ -13,8 +13,7 @@ Just install it.
 Configuration
 -------------
 
-Change param ``auto_install`` in ``__manifest.py__`` file is ``True`` if the 
-page have error blank page.
+Nothing.
 
 Usage
 -----
@@ -33,7 +32,7 @@ Updating.
 Bug Tracker
 -----------
 
-If this module don't working. Please raise to me. Or you can fix it by two way.
+If this module don't working. Please raise to me or you can fix it by two way.
 
 **Firt way**
 
