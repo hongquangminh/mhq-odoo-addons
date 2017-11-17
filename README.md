@@ -18,6 +18,6 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[web_fix_blank_page_v10](web_fix_blank_page_v10/) | 10.0.1.0.0 | Fix Error Blank Page
+[web_fix_blank_page](web_fix_blank_page/) | 10.0.1.0.0 | Fix Error Blank Page
 
 [//]: # (end addons)
