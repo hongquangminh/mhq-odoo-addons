@@ -8,34 +8,32 @@ from odoo import models, fields
 class AssetsBundle(object):
 
     def save_attachment(self, type, content, inc=None):
-        assert type in ('js', 'css')
-        ira = self.env['ir.attachment']
+        with odoo.api.Environment.manage():
+            with odoo.registry(self.env.cr.dbname).cursor() as new_cr:
+                new_env = api.Environment(new_cr, self.env.uid, self.env.context)
+                assert type in ('js', 'css')
+                ira = new_env['ir.attachment']
+                fname = '%s%s.%s' % (self.name, ('' if inc is None else '.%s' % inc), type)
+                mimetype = 'application/javascript' if type == 'js' else 'text/css'
+                values = {
+                    'name': "/web/content/%s" % type,
+                    'datas_fname': fname,
+                    'mimetype': mimetype,
+                    'res_model': 'ir.ui.view',
+                    'res_id': False,
+                    'type': 'binary',
+                    'public': True,
+                    'datas': content.encode('utf8').encode('base64'),
+                }
+                attachment = ira.sudo().create(values)
+                url = '/web/content/%s-%s/%s' % (attachment.id, self.version, fname)
+                values = {
+                    'name': url,
+                    'url': url,
+                }
+                attachment.write(values)
 
-        fname = '%s%s.%s' % (
-            self.name, ('' if inc is None else '.%s' % inc), type)
-        mimetype = 'application/javascript' if type == 'js' else 'text/css'
-        values = {
-            'name': "/web/content/%s" % type,
-            'datas_fname': fname,
-            'mimetype': mimetype,
-            'res_model': 'ir.ui.view',
-            'res_id': False,
-            'type': 'binary',
-            'public': True,
-            'datas': content.encode('utf8').encode('base64'),
-        }
-        attachment = ira.sudo().create(values)
-
-        url = '/web/content/%s-%s/%s' % (attachment.id, self.version, fname)
-        values = {
-            'name': url,
-            'url': url,
-        }
-        attachment.write(values)
-
-        if self.env.context.get('commit_assetsbundle') is True:
-            self.env.cr.commit()
-
-        self.clean_attachments(type)
-
-        return attachment
+                if new_env.context.get('commit_assetsbundle') is True:
+                    new_env.cr.commit()
+                self.with_env(new_env).clean_attachments(type)
+                return attachment
