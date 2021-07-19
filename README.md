@@ -1,6 +1,7 @@
 # mhq-odoo-addons
 
 ![Licence](https://img.shields.io/badge/licence-AGPL--3-blue.svg)
+[![Build Status](https://app.travis-ci.com/hongquangminh/mhq-odoo-addons.svg?branch=10.0)](https://app.travis-ci.com/hongquangminh/mhq-odoo-addons)
 
 Contributions for Community
 ===========================
