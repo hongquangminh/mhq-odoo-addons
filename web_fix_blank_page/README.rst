@@ -56,8 +56,7 @@ After that, If you had error with displaying image and icon in Odoo
 
 **Second way**
 
-* Replace method ``save_attachment`` in this module for module ``base`` 
-in your Odoo directory.
+* Replace method ``save_attachment`` in this module for module ``base`` in your Odoo directory.
 
 Bugs are tracked on `MinhHQ Github Issues
 <https://github.com/minhhq09/mhq-odoo-addons/issues>`_. 
