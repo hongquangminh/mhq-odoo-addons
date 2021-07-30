@@ -12,7 +12,11 @@ class AssetsBundle(object):
                 new_env = api.Environment(new_cr, self.env.uid, self.env.context)
                 assert type in ('js', 'css')
                 ira = new_env['ir.attachment']
-                fname = '%s%s.%s' % (self.name, ('' if inc is None else '.%s' % inc), type)
+                fname = '%s%s.%s' % (
+                    self.name,
+                    ('' if inc is None else '.%s' % inc),
+                    type
+                )
                 mimetype = 'application/javascript' if type == 'js' else 'text/css'
                 values = {
                     'name': "/web/content/%s" % type,
