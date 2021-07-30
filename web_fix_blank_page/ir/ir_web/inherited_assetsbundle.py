@@ -2,8 +2,7 @@
 # Copyright (C) 2017 Hom Nay Code Gi Blog (<https://homnaycodegi.com/>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields
-
+import odoo
 
 class AssetsBundle(object):
 
