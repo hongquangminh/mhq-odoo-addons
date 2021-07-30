@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2017 Hom Nay Code Gi Blog (<https://homnaycodegi.com/>)
+# Copyright (C) 2017 MinhHong.Info (<https://minhhong.info/>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': 'Fix Error Blank Page',
     'summary': 'Fix Error Blank Page',
-    'author': 'MinhHQ',
-    'website': 'https://homnaycodegi.com/',
+    'author': 'MinhHong.Info',
+    'website': 'https://minhhong.info/',
     'category': 'Backend',
     'images': [
         'images/screen.png'
